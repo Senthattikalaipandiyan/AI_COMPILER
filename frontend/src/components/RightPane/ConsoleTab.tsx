@@ -20,9 +20,10 @@ interface ConsoleTabProps {
 }
 
 const WS_URL =
-  (window.location.protocol === 'https:' ? 'wss://' : 'ws://') +
-  (window.location.hostname || 'localhost') +
-  ':8000/api/ws/terminal';
+  import.meta.env.VITE_WS_URL ||
+  ((window.location.protocol === 'https:' ? 'wss://' : 'ws://') +
+    (window.location.hostname || 'localhost') +
+    ':8000/api/ws/terminal');
 
 export const ConsoleTab: React.FC<ConsoleTabProps> = ({
   pendingRun,
